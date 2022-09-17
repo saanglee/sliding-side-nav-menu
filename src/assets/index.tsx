@@ -1,0 +1,9 @@
+export { ReactComponent as LogoutIcon } from './logout_black_24dp.svg';
+export { ReactComponent as AnalyticsIcon } from './insert_chart_black_24dp.svg';
+export { ReactComponent as DashboardIcon } from './home_black_24dp.svg';
+export { ReactComponent as RightArrowIcon } from './chevron_right_black_24dp.svg';
+export { ReactComponent as DarkModeIcon } from './dark_mode_black_24dp.svg';
+export { ReactComponent as ScheduleIcon } from './event_black_24dp.svg';
+export { ReactComponent as SearchIcon } from './search_black_24dp.svg';
+export { ReactComponent as UserIcon } from './face_black_24dp.svg';
+export { ReactComponent as LikesIcon } from './favorite_border_black_24dp.svg';
