@@ -1,0 +1,40 @@
+.navFooterContainer {
+  position: absolute;
+  bottom: 0;
+}
+
+.toggleButton {
+  width: 6rem;
+  height: 3rem;
+  display: block;
+  position: relative;
+  right: 10px;
+  border-radius: 50px;
+  background-color: #fff;
+  box-shadow: 0 0 1rem 3px rgba(0 0 0 / 15%);
+  cursor: pointer;
+  border: none;
+  .toggleSwitch {
+    width: 2.6rem;
+    height: 2.6rem;
+    position: absolute;
+    top: 50%;
+    left: 0.2rem;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    background: #f03d3d;
+  }
+}
+
+.active {
+  background: #f03d3d;
+  .toggleSwitch {
+    left: calc(100% - 2.8rem);
+    background: #fff;
+  }
+}
+
+.toggleButton,
+.toggleSwitch {
+  transition: all 0.2s ease-in;
+}
