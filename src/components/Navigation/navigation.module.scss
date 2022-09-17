@@ -1,0 +1,89 @@
+@use 'src/styles/constants/colors';
+@use 'src/styles/constants/sizes';
+
+$pad: 10px;
+
+%box {
+  width: 300px;
+  height: 65px;
+  border-radius: 10px;
+  line-height: 60px;
+}
+
+.navContainer {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  bottom: 50px;
+
+  padding: 25px 20px 20px 20px;
+  width: 60px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 10px 5px colors.$GRAYD;
+  font-size: sizes.$FONT_SIZE_M;
+
+  transition: width 400ms;
+
+  .navButton {
+    float: right;
+    border: 1px solid black;
+    border-radius: 50%;
+    .navButtonIcon {
+      transition: all ease 400ms;
+    }
+  }
+
+  nav {
+    ul {
+      @extend %box;
+      font-weight: 600;
+      margin: {
+        top: $pad * 2;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+      list-style: none;
+      li {
+        height: 40px;
+        position: relative;
+        clear: both;
+        width: 100%;
+        padding: 0;
+        transition: margin-right 400ms;
+      }
+      .item {
+        z-index: 0;
+        opacity: 0;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
+
+// Navigation Open
+
+.openNavContainer {
+  width: 350px;
+  padding: 25px;
+  nav {
+    li {
+      .openItem {
+        opacity: 1;
+        transition: 1000ms;
+        a {
+          color: colors.$GRAY6;
+        }
+      }
+    }
+  }
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
