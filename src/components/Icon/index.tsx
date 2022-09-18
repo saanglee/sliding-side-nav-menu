@@ -21,16 +21,16 @@ const Icon = ({
 }: IconProps): ReactElement => {
   const SvgIcon = icons[icon];
   const strockColor = stroke;
-  const width =
+  const height =
     size &&
     (typeof size === 'number' ? `${size}px` : `${size.replace('px', '')}px`);
 
   return (
     <SvgIcon
       onClick={onClick}
-      fill={color}
+      fill='#666666'
       stroke={strockColor}
-      width={width}
+      height='40'
     />
   );
 };
