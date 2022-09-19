@@ -1,32 +1,41 @@
-import NavList from './NavList';
-
-import NavFooter from './navFooter/NavFooter';
-import logo from '../../assets/logo.png';
 import { useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import Icon from '../Icon';
 import cx from 'classnames';
 import styles from './navigation.module.scss';
 import NavHeader from './navHeader/NavHeader';
-// className={cx(styles.AddtoCartMobile, { [styles.AddtoCartPc]: isDesktop })}
+import NavList from './NavList';
+import NavFooter from './navFooter/NavFooter';
+import { isDarkMode, isOpenMenu } from '../../store/global';
 
 const Navigation = () => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useRecoilState(isOpenMenu);
+  const isDark = useRecoilValue(isDarkMode);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
   };
   return (
     <div
-      className={cx(styles.navContainer, { [styles.openNavContainer]: isOpen })}
+      className={cx(
+        styles.navContainer,
+        { [styles.openNavContainer]: isOpen },
+        { [styles.navDark]: isDark }
+      )}
     >
-      <button type='button' onClick={handleClick} className={styles.navButton}>
+      <button
+        type='button'
+        onClick={handleClick}
+        className={cx(styles.arrowBtn, { [styles.openArrowBtn]: isOpen })}
+      >
         <div className={cx(styles.navButtonIcon, { [styles.rotate]: isOpen })}>
-          <Icon icon='RightArrowIcon' />
+          <Icon icon='RightArrowIcon' color='white' size={31} />
         </div>
       </button>
-      <NavHeader />
-
-      <NavList isOpen={isOpen} />
+      <div className={styles.navWrapper}>
+        <NavHeader />
+        <NavList />
+      </div>
       <NavFooter />
     </div>
   );

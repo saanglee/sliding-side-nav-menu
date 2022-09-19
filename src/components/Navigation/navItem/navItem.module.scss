@@ -1,0 +1,42 @@
+@use 'src/styles/constants/colors';
+@use 'src/styles/constants/sizes';
+@use 'src/styles/mixins/responsive';
+
+.itemContainer {
+  border-radius: 15px;
+  display: flex;
+  width: 65px;
+  height: 65px;
+  transition: width 300ms;
+  margin-bottom: 10px;
+  .iconWrapper {
+    padding: 10px 10px 0 8px;
+  }
+
+  .textWrapper {
+    display: none;
+  }
+
+  &:hover {
+    background-color: colors.$BLUE;
+    svg {
+      fill: white;
+    }
+    span {
+      color: white;
+    }
+  }
+}
+
+.openItemContainer {
+  @include responsive.menuItemBox;
+  .iconWrapper {
+    padding: 10px 15px 0 10px;
+  }
+
+  .textWrapper {
+    display: inline;
+    line-height: 65px;
+    color: colors.$GRAY6;
+  }
+}
