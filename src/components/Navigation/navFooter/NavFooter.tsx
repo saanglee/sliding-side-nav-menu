@@ -1,34 +1,39 @@
 import React, { useState } from 'react';
-import Icon from '../../Icon';
 import cx from 'classnames';
 import styles from './navFooter.module.scss';
-// className={cx(styles.AddtoCartMobile, { [styles.AddtoCartPc]: isDesktop })}
+import Toggle from '../../Button/Toggle';
+import NavItem from '../navItem/NavItem';
+import Icon from '../../Icon';
+import { useRecoilValue } from 'recoil';
+import { isDarkMode, isOpenMenu } from '../../../store/global';
 
 const NavFooter = () => {
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
-  const handleToggle = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  const isOpen = useRecoilValue(isOpenMenu);
+  const isDark = useRecoilValue(isDarkMode);
+
   return (
-    <div className={styles.navFooterContainer}>
-      <div className={styles.logoutWrapper}>
-        <Icon icon='LogoutIcon' />
-        <span>Logout</span>
-      </div>
-      <div>
-        <Icon icon='DarkModeIcon' />
-        <button
-          type='button'
-          onClick={handleToggle}
-          className={cx(styles.toggleButton, { [styles.active]: isDarkMode })}
-        >
-          <span
-            className={cx(styles.toggleSwitch, { [styles.active]: isDarkMode })}
-          >
-            Darkmode
-          </span>
-        </button>
-      </div>
+    <div className={cx(styles.navFooterContainer)}>
+      <NavItem icon={'LogoutIcon'} text={'Logout'} />
+
+      <li
+        className={cx(
+          styles.DarkModeWrapper,
+          {
+            [styles.openDarkModeWrapper]: isOpen,
+          },
+          {
+            [styles.darkMode]: isDark,
+          }
+        )}
+      >
+        <div className={styles.iconWrapper}>
+          <Icon icon={'DarkModeIcon'} color={'#666666'} size={47} />
+        </div>
+        <span className={styles.textWrapper}>Dark Mode</span>
+        <div className={styles.toggleWrapper}>
+          <Toggle />
+        </div>
+      </li>
     </div>
   );
 };
