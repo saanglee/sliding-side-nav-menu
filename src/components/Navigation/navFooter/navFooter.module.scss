@@ -1,40 +1,61 @@
+@use 'src/styles/constants/colors';
+@use 'src/styles/mixins/responsive';
+@use 'src/styles/mixins/animation';
+
 .navFooterContainer {
+  border-top: 1px solid colors.$GRAYD;
+  padding: 18px;
   position: absolute;
   bottom: 0;
-}
+  width: 100%;
+  height: 200px;
 
-.toggleButton {
-  width: 6rem;
-  height: 3rem;
-  display: block;
-  position: relative;
-  right: 10px;
-  border-radius: 50px;
-  background-color: #fff;
-  box-shadow: 0 0 1rem 3px rgba(0 0 0 / 15%);
-  cursor: pointer;
-  border: none;
-  .toggleSwitch {
-    width: 2.6rem;
-    height: 2.6rem;
-    position: absolute;
-    top: 50%;
-    left: 0.2rem;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    background: #f03d3d;
+  .DarkModeWrapper {
+    // background-color: colors.$INPUT;
+    @include animation.boxTheme($light-mode: true);
+    height: 65px;
+    border-radius: 8px;
+    .iconWrapper {
+      display: none;
+    }
+    .textWrapper {
+      display: none;
+    }
+    .toggleWrapper {
+      position: absolute;
+      right: 40px;
+      margin-top: 20px;
+      transition: 400ms;
+    }
+    .toggleWrapper {
+      position: absolute;
+      right: 30px;
+      margin-top: 20px;
+      transition: 400ms;
+    }
   }
-}
-
-.active {
-  background: #f03d3d;
-  .toggleSwitch {
-    left: calc(100% - 2.8rem);
-    background: #fff;
+  .openDarkModeWrapper {
+    border-radius: 15px;
+    display: flex;
+    height: 65px;
+    transition: width 300ms;
+    margin-bottom: 10px;
+    // background-color: colors.$INPUT;
+    @include animation.boxTheme($light-mode: true);
+    .iconWrapper {
+      display: block;
+      padding: 10px 10px 0 8px;
+    }
+    .textWrapper {
+      display: inline;
+      line-height: 65px;
+      color: colors.$GRAY6;
+    }
+    .toggleWrapper {
+      right: 40px;
+    }
   }
-}
-
-.toggleButton,
-.toggleSwitch {
-  transition: all 0.2s ease-in;
+  .darkMode {
+    @include animation.boxTheme($light-mode: false);
+  }
 }
