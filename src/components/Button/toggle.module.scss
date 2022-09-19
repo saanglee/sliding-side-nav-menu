@@ -1,0 +1,31 @@
+@use 'src/styles/constants/colors';
+
+.toggle {
+  width: 45px;
+  height: 25px;
+  display: block;
+  position: relative;
+  border-radius: 50px;
+  background-color: colors.$GRAYD;
+  cursor: pointer;
+  border: none;
+
+  .toggleSwitch {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 3px;
+    top: 2.5px;
+    transition: all 200ms ease-in;
+    border-radius: 50%;
+    background: white;
+  }
+}
+
+.toggleActive {
+  background-color: white;
+  .toggleSwitch {
+    background: black;
+    left: 22px;
+  }
+}
