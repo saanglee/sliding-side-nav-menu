@@ -1,6 +1,18 @@
+@use 'src/styles/mixins/animation';
+@use 'src/styles/constants/colors';
+
 .layoutContainer {
-  display: flex;
+  @include animation.backgroundTheme($light-mode: true);
+  font-size: 80px;
 }
-.layoutMain {
-  margin-top: 50px;
+
+.layoutDark {
+  @include animation.backgroundTheme($light-mode: false);
+  color: white;
+}
+
+main {
+  min-height: 900px;
+  max-width: 1200px;
+  padding: 60px 0 0 300px;
 }
