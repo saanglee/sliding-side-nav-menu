@@ -1,7 +1,6 @@
-import cx from 'classnames';
-import { useState } from 'react';
 import { useRecoilValue } from 'recoil';
 import { isDarkMode, isOpenMenu } from '../../../store/global';
+import { cx } from '../../../styles';
 import Icon, { IconType } from '../../Icon';
 import styles from './navItem.module.scss';
 
@@ -10,52 +9,17 @@ interface NavItemProps {
   icon: IconType;
   index?: number;
   selectedItem?: string;
-  handleClick?: any; // FIXME: any 고치기
+  handleClick?: (...args: any) => void;
   current?: string;
-  hasButton?: boolean;
 }
 
-interface Palette {
-  blue: '#399fff';
-  white: '#ffffff';
-}
-
-const NavItem = ({
-  text,
-  icon,
-  index,
-  selectedItem,
-  handleClick,
-  hasButton,
-}: NavItemProps) => {
+const NavItem = ({ text, icon, index }: NavItemProps) => {
   const isDark = useRecoilValue(isDarkMode);
   const isOpen = useRecoilValue(isOpenMenu);
-  const [current, setCurrent] = useState<number>();
-  const [selected, setSelected] = useState<boolean>(false);
-  // const [color, setColor] = useState({
-  //   backgroundColor: '#ffffff',
-  //   iconColor: '#666666',
-  //   fontColor: '#666666',
-  // });
-
-  // const handleClickMenu = (
-  //   evnet: React.MouseEvent<HTMLLIElement, MouseEvent>
-  // ) => {
-  //   console.log(index);
-  //   const currentIndex = index;
-  //   setCurrent(currentIndex);
-
-  //   if (current === index) {
-  //     setSelected(!selected);
-  //   } else {
-  //     setSelected(false);
-  //   }
-  // };
 
   return (
     <li
       value={index}
-      // onClick={handleClickMenu}
       className={cx(
         styles.itemContainer,
         {

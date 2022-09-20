@@ -6,11 +6,15 @@ import Schedule from '../pages/Schedule';
 import User from '../pages/User';
 import Layout from './Layout';
 
-import styles from './routes.module.scss';
+import './routes.module.scss';
+import { useRecoilValue } from 'recoil';
+import { isDarkMode } from '../store/global';
 
 const App = () => {
+  const isDark = useRecoilValue(isDarkMode);
+
   return (
-    <div className={styles.app}>
+    <div className={`app ${isDark ? 'dark' : ''}`}>
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route path='dashboard' element={<Dashboard />}></Route>
