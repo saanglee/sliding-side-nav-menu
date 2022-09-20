@@ -1,41 +1,70 @@
 import cx from 'classnames';
-import { MutableRefObject, useRef, useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { isOpenMenu } from '../../../store/global';
-import Toggle from '../../Button/Toggle';
+import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { isDarkMode, isOpenMenu } from '../../../store/global';
 import Icon, { IconType } from '../../Icon';
 import styles from './navItem.module.scss';
 
 interface NavItemProps {
   text: string;
   icon: IconType;
-  value?: number;
+  index?: number;
   selectedItem?: string;
   handleClick?: any; // FIXME: any 고치기
   current?: string;
   hasButton?: boolean;
 }
 
+interface Palette {
+  blue: '#399fff';
+  white: '#ffffff';
+}
+
 const NavItem = ({
   text,
   icon,
-  value,
+  index,
   selectedItem,
   handleClick,
   hasButton,
 }: NavItemProps) => {
+  const isDark = useRecoilValue(isDarkMode);
   const isOpen = useRecoilValue(isOpenMenu);
+  const [current, setCurrent] = useState<number>();
+  const [selected, setSelected] = useState<boolean>(false);
+  // const [color, setColor] = useState({
+  //   backgroundColor: '#ffffff',
+  //   iconColor: '#666666',
+  //   fontColor: '#666666',
+  // });
 
-  const handleClickMenu = () => {
-    console.log(value);
-  };
+  // const handleClickMenu = (
+  //   evnet: React.MouseEvent<HTMLLIElement, MouseEvent>
+  // ) => {
+  //   console.log(index);
+  //   const currentIndex = index;
+  //   setCurrent(currentIndex);
+
+  //   if (current === index) {
+  //     setSelected(!selected);
+  //   } else {
+  //     setSelected(false);
+  //   }
+  // };
+
   return (
     <li
-      value={value}
-      onClick={handleClick}
-      className={cx(styles.itemContainer, {
-        [styles.openItemContainer]: isOpen,
-      })}
+      value={index}
+      // onClick={handleClickMenu}
+      className={cx(
+        styles.itemContainer,
+        {
+          [styles.openItemContainer]: isOpen,
+        },
+        {
+          [styles.darkItemConatiner]: isDark,
+        }
+      )}
     >
       <div className={styles.iconWrapper}>
         <Icon icon={icon} color={'#666666'} size={47} />
