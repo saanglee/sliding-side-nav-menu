@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from '../../../assets/logo.png';
-
-import cx from 'classnames';
-import styles from './navHeader.module.scss';
-import Icon from '../../Icon';
 import { useRecoilValue } from 'recoil';
 import { isDarkMode, isOpenMenu } from '../../../store/global';
+import { cx } from '../../../styles';
+import logo from '../../../assets/logo.png';
+import Icon from '../../Icon';
+import styles from './navHeader.module.scss';
 
 const NavHeader = () => {
   const isOpen = useRecoilValue(isOpenMenu);
