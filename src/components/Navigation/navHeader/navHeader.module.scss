@@ -1,5 +1,5 @@
 @use 'src/styles/constants/colors';
-@use 'src/styles/mixins/responsive';
+@use 'src/styles/mixins/mixins';
 @use 'src/styles/mixins/animation';
 
 .navHeader {
@@ -14,12 +14,12 @@
       height: 60px;
     }
     .title {
-      margin-left: 15px;
       color: colors.$TITLE;
+      margin-left: 15px;
       font-weight: 500;
+      display: block;
       opacity: 1;
       transition: 0.3s;
-      display: block;
 
       h2 {
         font-size: 20px;
@@ -41,19 +41,18 @@
   .inputWrapper {
     display: flex;
     .iconBox {
-      @include responsive.iconBox;
+      @include mixins.iconBox;
       @include animation.boxTheme($light-mode: true);
       position: relative;
-      z-index: 1;
       text-align: center;
       span {
         display: inline-block;
         margin-top: 12px;
       }
       .searchInput {
+        @include animation.boxTheme($light-mode: true);
         width: 0;
         height: 65px;
-        @include animation.boxTheme($light-mode: true);
         position: absolute;
         left: 55px;
         border: none;
@@ -73,9 +72,8 @@
     .openTitle {
       h2,
       p {
+        @include animation.fadeInText(2);
         display: block;
-        opacity: 1;
-        animation: fadein 2s;
         white-space: nowrap;
       }
     }
@@ -95,14 +93,5 @@
     .iconBoxDark {
       @include animation.boxTheme($light-mode: false);
     }
-  }
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
