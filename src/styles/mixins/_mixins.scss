@@ -1,0 +1,22 @@
+@mixin iconBox {
+  width: 65px;
+  height: 65px;
+  border-radius: 8px;
+}
+
+@mixin menuItemBox {
+  width: 300px;
+  height: 65px;
+  border-radius: 10px;
+}
+
+@mixin openItem {
+  opacity: 1;
+  transition: 1000ms;
+}
+
+@mixin after($media) {
+  @media only screen and (min-width: getMinBreakpoint($media)) {
+    @content;
+  }
+}
