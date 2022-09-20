@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import cx from 'classnames';
-import styles from './navFooter.module.scss';
+import { useRecoilValue } from 'recoil';
+import { isDarkMode, isOpenMenu } from '../../../store/global';
 import Toggle from '../../Button/Toggle';
 import NavItem from '../navItem/NavItem';
 import Icon from '../../Icon';
-import { useRecoilValue } from 'recoil';
-import { isDarkMode, isOpenMenu } from '../../../store/global';
+import { cx } from '../../../styles';
+import styles from './navFooter.module.scss';
 
 const NavFooter = () => {
   const isOpen = useRecoilValue(isOpenMenu);

@@ -1,17 +1,16 @@
 @use 'src/styles/constants/colors';
-@use 'src/styles/mixins/responsive';
+@use 'src/styles/mixins/mixins';
 @use 'src/styles/mixins/animation';
 
 .navFooterContainer {
-  border-top: 1px solid colors.$GRAYD;
+  width: 100%;
+  height: 200px;
   padding: 18px;
   position: absolute;
   bottom: 0;
-  width: 100%;
-  height: 200px;
+  border-top: 1px solid colors.$GRAYD;
 
   .DarkModeWrapper {
-    // background-color: colors.$INPUT;
     @include animation.boxTheme($light-mode: true);
     height: 65px;
     border-radius: 8px;
@@ -25,13 +24,13 @@
       position: absolute;
       right: 40px;
       margin-top: 20px;
-      transition: 400ms;
+      transition: 300ms;
     }
     .toggleWrapper {
       position: absolute;
       right: 30px;
       margin-top: 20px;
-      transition: 400ms;
+      transition: 300ms;
     }
   }
   .openDarkModeWrapper {
@@ -40,7 +39,6 @@
     height: 65px;
     transition: width 300ms;
     margin-bottom: 10px;
-    // background-color: colors.$INPUT;
     @include animation.boxTheme($light-mode: true);
     .iconWrapper {
       display: block;
