@@ -1,14 +1,8 @@
 @use 'src/styles/constants/colors';
-@use 'src/styles/constants/sizes';
+@use 'src/styles/mixins/mixins';
+@use 'src/styles/mixins/animation';
 
 $pad: 10px;
-
-%box {
-  width: 300px;
-  height: 65px;
-  border-radius: 10px;
-  line-height: 60px;
-}
 
 .navContainer {
   position: absolute;
@@ -16,74 +10,55 @@ $pad: 10px;
   left: 50px;
   bottom: 50px;
 
-  padding: 25px 20px 20px 20px;
-  width: 60px;
+  width: 100px;
+  min-height: 800px;
   border-radius: 15px;
   box-shadow: 1px 1px 10px 5px colors.$GRAYD;
-  font-size: sizes.$FONT_SIZE_M;
+  font-size: 18px;
+  transition: width 300ms;
+  @include animation.backgroundTheme($light-mode: true);
 
-  transition: width 400ms;
-
-  .navButton {
-    float: right;
-    border: 1px solid black;
+  .arrowBtn {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 88px;
+    top: 50px;
+    background-color: colors.$BLUE;
     border-radius: 50%;
+    transition: 300ms;
+
     .navButtonIcon {
-      transition: all ease 400ms;
+      transition: all ease 300ms;
     }
   }
 
-  nav {
-    ul {
-      @extend %box;
-      font-weight: 600;
-      margin: {
-        top: $pad * 2;
-        right: 0;
-        bottom: 0;
-        left: 0;
-      }
-      list-style: none;
-      li {
-        height: 40px;
-        position: relative;
-        clear: both;
-        width: 100%;
-        padding: 0;
-        transition: margin-right 400ms;
-      }
-      .item {
-        z-index: 0;
-        opacity: 0;
-        transition: 0.3s;
-      }
-    }
+  .navWrapper {
+    padding: 18px;
   }
 }
-
-img {
-  width: 40px;
-  height: 40px;
-}
-
-// Navigation Open
+// Open navigation
 
 .openNavContainer {
   width: 350px;
-  padding: 25px;
-  nav {
-    li {
-      .openItem {
-        opacity: 1;
-        transition: 1000ms;
-        a {
-          color: colors.$GRAY6;
-        }
-      }
+  .openArrowBtn {
+    left: 335px;
+    transition: 300ms;
+  }
+}
+
+.openArrowBtn {
+  .rotate {
+    transform: rotate(180deg);
+    svg {
+      position: relative;
+      top: 4px;
     }
   }
 }
 
-.rotate {
-  transform: rotate(180deg);
+// dark mode
+
+.navDark {
+  @include animation.backgroundTheme($light-mode: false);
 }

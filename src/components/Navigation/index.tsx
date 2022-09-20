@@ -1,12 +1,11 @@
-import { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import Icon from '../Icon';
-import cx from 'classnames';
-import styles from './navigation.module.scss';
-import NavHeader from './navHeader/NavHeader';
-import NavList from './NavList';
-import NavFooter from './navFooter/NavFooter';
 import { isDarkMode, isOpenMenu } from '../../store/global';
+import { cx } from '../../styles';
+import NavHeader from './navHeader/NavHeader';
+import NavFooter from './navFooter/NavFooter';
+import NavList from './NavList';
+import Icon from '../Icon';
+import styles from './navigation.module.scss';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useRecoilState(isOpenMenu);
