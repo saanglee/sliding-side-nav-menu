@@ -1,21 +1,81 @@
-/*
-@mixin cubicBezier($duration) {
-  transition: $duration;
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+@use 'src/styles/constants/colors';
 
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(359deg);
-  }
-}
-*/
-
-@mixin openNav {
-  opacity: 1;
+@mixin fadeInBackground($color) {
+  background-color: $color;
   transition: 1000ms;
+}
+
+// fade in text
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@mixin fadeInText($sec) {
+  opacity: 1;
+  animation: fadeIn #{$sec}s;
+}
+
+// navigation background theme
+
+@keyframes lightToDark {
+  from {
+    background-color: colors.$WHITE;
+  }
+  to {
+    background-color: colors.$DARK_BACKGROUND;
+  }
+}
+
+@keyframes darkToLight {
+  from {
+    background-color: colors.$DARK_BACKGROUND;
+  }
+  to {
+    background-color: colors.$WHITE;
+  }
+}
+
+@mixin backgroundTheme($light-mode: true) {
+  @if $light-mode {
+    animation: darkToLight 700ms;
+    background-color: colors.$WHITE;
+  } @else {
+    animation: lightToDark 700ms;
+    background-color: colors.$DARK_BACKGROUND;
+  }
+}
+
+// selected box theme
+
+@keyframes grayToDark {
+  from {
+    background-color: colors.$INPUT;
+  }
+  to {
+    background-color: colors.$DARK_SECONDARY;
+  }
+}
+
+@keyframes darkToGray {
+  from {
+    background-color: colors.$DARK_SECONDARY;
+  }
+  to {
+    background-color: colors.$INPUT;
+  }
+}
+
+@mixin boxTheme($light-mode: true) {
+  @if $light-mode {
+    animation: darkToLight 500ms;
+    background-color: colors.$INPUT;
+  } @else {
+    animation: lightToDark 500ms;
+    background-color: colors.$DARK_SECONDARY;
+  }
 }
