@@ -1,24 +1,29 @@
 @use 'src/styles/constants/colors';
-@use 'src/styles/constants/sizes';
-@use 'src/styles/mixins/responsive';
+@use 'src/styles/mixins/mixins';
+@use 'src/styles/mixins/animation';
 
 .itemContainer {
-  border-radius: 15px;
-  display: flex;
+  @include animation.fadeInBackground(colors.$WHITE);
   width: 65px;
   height: 65px;
-  transition: width 300ms;
   margin-bottom: 10px;
+  border-radius: 15px;
+  display: flex;
+  transition: width 300ms;
+
   .iconWrapper {
     padding: 10px 10px 0 8px;
   }
 
   .textWrapper {
     display: none;
+    opacity: 0;
+    transition: 400ms;
   }
 
   &:hover {
-    background-color: colors.$BLUE;
+    @include animation.fadeInBackground(colors.$BLUE);
+
     svg {
       fill: white;
     }
@@ -29,14 +34,29 @@
 }
 
 .openItemContainer {
-  @include responsive.menuItemBox;
+  @include mixins.menuItemBox;
+
   .iconWrapper {
     padding: 10px 15px 0 10px;
   }
 
   .textWrapper {
+    @include animation.fadeInText(2);
+    color: colors.$GRAY6;
     display: inline;
     line-height: 65px;
-    color: colors.$GRAY6;
+  }
+}
+
+.darkItemConatiner {
+  background-color: colors.$DARK_BACKGROUND;
+  &:hover {
+    @include animation.fadeInBackground(colors.$DARK_SECONDARY);
+    svg {
+      fill: white;
+    }
+    span {
+      color: white;
+    }
   }
 }
