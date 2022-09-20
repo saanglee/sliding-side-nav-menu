@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import cx from 'classnames';
-import styles from './toggle.module.scss';
+import { useState } from 'react';
 import { useRecoilState } from 'recoil';
-import { isDarkMode, isOpenMenu } from '../../store/global';
+import { isDarkMode } from '../../store/global';
+import { cx } from '../../styles';
+import styles from './toggle.module.scss';
 
 const Toggle = () => {
   const [toggle, setToggle] = useState(false);
