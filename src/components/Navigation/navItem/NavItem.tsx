@@ -13,13 +13,12 @@ interface NavItemProps {
   current?: string;
 }
 
-const NavItem = ({ text, icon, index }: NavItemProps) => {
+const NavItem = ({ text, icon }: NavItemProps) => {
   const isDark = useRecoilValue(isDarkMode);
   const isOpen = useRecoilValue(isOpenMenu);
 
   return (
     <li
-      value={index}
       className={cx(
         styles.itemContainer,
         {
