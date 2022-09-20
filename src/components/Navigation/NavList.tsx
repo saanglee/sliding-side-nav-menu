@@ -1,26 +1,24 @@
-import React from 'react';
-import NavItem from './NavItem';
-import cx from 'classnames';
-import styles from './navigation.module.scss';
+import { Link } from 'react-router-dom';
+import { IconType } from '../Icon';
+import NavItem from './navItem/NavItem';
 
 const navItems = ['Dashboard', 'Schedule', 'Analytics', 'Likes', 'User'];
 
-const NavList = (isOpen: { isOpen: boolean }) => {
-  const open = isOpen;
+const NavList = () => {
   return (
     <nav>
-      {navItems.map((item: string) => {
-        const link = item.charAt(0).toUpperCase() + item.slice(1);
-        const icon = `${item}Icon`;
-        return (
-          <ul
-            key={item}
-            className={cx(styles.list, { [styles.openList]: isOpen })}
-          >
-            <NavItem icon={icon} text={item} to={link} isOpen={isOpen} />
-          </ul>
-        );
-      })}
+      <ul>
+        {navItems.map((item: string, index: number) => {
+          const link = item.charAt(0).toUpperCase() + item.slice(1);
+          const icon = `${item}Icon` as IconType;
+
+          return (
+            <Link to={link} key={item}>
+              <NavItem text={item} icon={icon} index={index} />
+            </Link>
+          );
+        })}
+      </ul>
     </nav>
   );
 };
